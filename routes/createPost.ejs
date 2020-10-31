@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Create a Post </title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/css/createPost.css" type="text/css">
+	</head>
+	<body>
+
+		<div class="topnav" id="myTopnav">
+			<b>Hey <%=user%></b>
+			<a href="/users/logout">Logout</a>
+			<a href="/posts/create">Post</a>
+			<a href="/" class="active">Home</a>
+			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+			  <i class="fa fa-bars"></i>
+			</a>
+		  </div>
+		
+		  <script>
+			function myFunction() {
+			  var x = document.getElementById("myTopnav");
+			  if (x.className === "topnav") {
+				x.className += " responsive";
+			  } else {
+				x.className = "topnav";
+			  }
+			}
+		  </script>
+
+		<div class="login-form">
+			<h1>Create a New Blog Post!</h1>
+			<form action="/posts/create" method="POST" enctype="multipart/form-data">
+				<div style="display: <%=condition%>;" class="condition">You already have a post with same title</div>
+				<input type="text" name="title" placeholder="Enter a Suitable Title" required>
+				<textarea name="body" placeholder="Write about something" required><%= body%></textarea>
+				<input type="file" name="photo" />
+				<input type="submit">
+			</form>
+		</div>
+	</body>
+</html>
